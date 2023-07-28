@@ -1,0 +1,47 @@
+﻿@model E_Card.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Product In List</h2>
+
+
+
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <form>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">ProductName</label>
+            @Html.EditorFor(model => model.ProductName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ProductName)
+        </div>
+        &nbsp;
+        <div class="form-group">
+            <label for="exampleInputPassword1">ProductPrice</label>
+            @Html.EditorFor(model => model.ProductPrice, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ProductPrice)
+        </div>
+        &nbsp;
+        <div class="form-group">
+            <label for="exampleInputPassword1">SelectProductImage</label>
+        </div>
+        <div class="form-group">
+            <input type="file" id="ProductImageFile" name="imageFile" />
+            @Html.ValidationMessageFor(model => model.ProductImage)
+        </div>&nbsp;
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Create" />
+        </div>
+    </form>
+    <div style="margin-top:10px">
+        <a href="index" class="btn btn-warning">Back To Index</a>
+    </div>
+}
+
